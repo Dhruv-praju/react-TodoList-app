@@ -29,11 +29,11 @@ class Todo extends Component{
     handleToggle = (evt)=>{
         this.props.toggleTodo(this.props.id)
     }
-    componentDidUpdate(prevProps, prevState){
-        console.log('IN TODO COMP DID UPDATE');
-        console.log(prevProps.task);   // old state
-        console.log(this.props.task);  // current state
-    }
+    // componentDidUpdate(prevProps, prevState){
+    //     console.log('IN TODO COMP DID UPDATE');
+    //     console.log(prevProps.task);   // old state
+    //     console.log(this.props.task);  // current state
+    // }
     render(){
         return (
             <div className='Todo'>

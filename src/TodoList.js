@@ -56,10 +56,13 @@ class TodoList extends Component{
             todos: updatedTodos
         })
     }
-    componentDidUpdate(prevProps, prevState){
-        console.log('IN COMPONENT DID UPDATE');
-        console.log(prevState.todos);   // old state
-        console.log(this.state.todos);  // current state
+    // componentDidUpdate(prevProps, prevState){
+    //     console.log('IN COMPONENT DID UPDATE');
+    //     console.log(prevState.todos);   // old state
+    //     console.log(this.state.todos);  // current state
+    // }
+    componentWillUnmount(){
+        console.log('IN COMPONENT WILL UNMOUNT!');
     }
     render(){
         return (
