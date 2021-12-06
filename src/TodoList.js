@@ -56,6 +56,11 @@ class TodoList extends Component{
             todos: updatedTodos
         })
     }
+    componentDidUpdate(prevProps, prevState){
+        console.log('IN COMPONENT DID UPDATE');
+        console.log(prevState.todos);   // old state
+        console.log(this.state.todos);  // current state
+    }
     render(){
         return (
             <div className='TodoList'>
