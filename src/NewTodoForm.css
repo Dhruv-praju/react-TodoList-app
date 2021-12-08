@@ -1,3 +1,30 @@
-.NewTodoForm{
+/* .NewTodoForm{
     padding: 1rem;
+} */
+.NewTodoForm form{
+    margin-top:3rem;
+	display:flex;
+	flex-wrap:wrap;
+}
+.NewTodoForm form input{
+    flex-grow:1;
+	border:none;
+	background:#f7f1f1;
+	padding:0.5em 1.5em;
+	font-size:1.3rem;
+}
+.NewTodoForm form button{
+    padding:0 1.3rem;
+	border:none;
+	background:#FF6666;
+	color:white;
+	text-transform:uppercase;
+	font-weight:bold;
+	border:1px solid rgba(255,255,255,.3);
+	margin-left:5px;
+	cursor:pointer;
+	transition:background .2s ease-out;
+}
+.NewTodoForm form button:hover{
+    background:#e25454;
 }

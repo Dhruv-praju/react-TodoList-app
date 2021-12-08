@@ -67,9 +67,11 @@ class TodoList extends Component{
     render(){
         return (
             <div className='TodoList'>
-                <h1>Todo List!</h1>
-                {this.showTodos()}
-                
+                <h1>Todo List 
+                    <span>Get things done, one item at a time.</span>
+                </h1>
+                <ul>{this.showTodos()}</ul>
+
                 <NewTodoForm addTodo={this.addTodo}/>
             </div>
         )

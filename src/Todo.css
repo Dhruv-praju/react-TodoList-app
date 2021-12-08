@@ -1,7 +1,54 @@
 .Todo{
-    padding: 0.4rem;
+	margin:.3rem -3rem 4px;
+	padding:.9rem 3rem;
+	align-items:center;
+	background:rgba(255,255,255,0.1);
+    font-size: 1.3rem;
 }
+
 .completed{
-    color: grey;
+    color: rgb(212, 212, 212);
     text-decoration: line-through;
+}
+.Todo-EditForm input{
+    flex-grow:1;
+	border:none;
+	background:#f7f1f1;
+	padding:0.5em 1.5em;
+	font-size:1.1rem;
+}
+.Todo-EditForm button{
+    padding:1em 1.3em;
+	border:none;
+	background:#FF6666;
+	color:white;
+	text-transform:uppercase;
+	font-weight:bold;
+	border:1px solid rgba(255,255,255,.3);
+	margin-left:5px;
+	cursor:pointer;
+	transition:background .2s ease-out;
+}
+.Todo-EditForm button:hover{
+    background:#e25454;
+
+}
+.Todo-div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Todo-buttons{
+    flex-shrink: 0;
+    padding-left: 0.7em;
+    margin: auto 0;
+}
+.Todo-buttons button{
+    border: none;
+    font-size: 1em;
+    margin: 0.4em;
+    background: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    color: #fff;
 }
