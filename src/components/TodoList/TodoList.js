@@ -1,11 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import NewTodoForm from '../NewTodoForm/NewTodoForm'
 import {v4 as uuid} from 'uuid'
 import Todo from '../Todo/Todo'
 import './TodoList.css'
 
 const TodoList = ()=>{
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState(JSON.parse(window.localStorage.getItem('todos') || '[]'))
 
     const addTodo = (todo)=>{
         let newTodo = {...todo, id:uuid(), completed:false}
@@ -40,6 +40,11 @@ const TodoList = ()=>{
             />
         ) )
     }
+
+    useEffect(()=>{
+        console.log('CHANGED.......');
+        window.localStorage.setItem('todos', JSON.stringify(todos))
+    }, [todos])
 
     return (
         <div className='TodoList'>

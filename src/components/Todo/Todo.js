@@ -35,8 +35,8 @@ const Todo = ({ id, task, update, remove, toggle, completed})=>{
             <div className='Todo-div'>
                 <p className={completed ? 'Todo-task completed' :'Todo-task'} onClick={handleToggle}>{task}</p>
                 <div className='Todo-buttons'>
-                    <button><i class="fas fa-pen" onClick={handleEdit}></i></button>
-                    <button><i class="fas fa-trash" onClick={handleDelete}></i></button>
+                    <button><i className="fas fa-pen" onClick={handleEdit}></i></button>
+                    <button><i className="fas fa-trash" onClick={handleDelete}></i></button>
                 </div>
             </div>
             }
