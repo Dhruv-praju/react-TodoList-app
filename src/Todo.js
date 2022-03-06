@@ -1,62 +1,47 @@
-import {Component} from 'react'
+import React from 'react'
+import useFormState from './hooks/useFormState'
+import useToggle from './hooks/useToggle'
 import './Todo.css'
 
-class Todo extends Component{
-    state = {
-        editing: false,
-        task: this.props.task
+const Todo = ({ id, task, update, remove, toggle, completed})=>{
+    const [editing, toggleEditing] = useToggle(false)
+    const [editedTask, handleEditedTask] = useFormState(task)
+
+    const handleEdit = ()=>{
+        toggleEditing()
     }
-    handleDelete=()=>{
-        this.props.delete(this.props.id)
+    const handleDelete = ()=>{
+        remove(id)
     }
-    handleEdit=()=>{
-        this.setState({
-            editing: true
-        })
+    const handleToggle = ()=>{
+        toggle(id)
     }
-    handleChange = (evt)=>{
-        this.setState({
-            [evt.target.name]: evt.target.value
-        })
-    }
-    handleSubmit = (evt)=>{
+    const handleSubmit = (evt)=>{
         evt.preventDefault()
-        this.props.update(this.props.id, this.state.task)
-        this.setState({
-            editing:false
-        })
+        update(id, editedTask)
+        toggleEditing()
     }
-    handleToggle = (evt)=>{
-        this.props.toggleTodo(this.props.id)
-    }
-    // componentDidUpdate(prevProps, prevState){
-    //     console.log('IN TODO COMP DID UPDATE');
-    //     console.log(prevProps.task);   // old state
-    //     console.log(this.props.task);  // current state
-    // }
-    render(){
-        return (
-            <li className='Todo'>
-                {this.state.editing
-                ? 
-                <div>
-                    <form className='Todo-EditForm' onSubmit={this.handleSubmit}>
-                        <input name='task' value={this.state.task} onChange={this.handleChange}/>
-                        <button>Update</button>
-                    </form>
+    return (
+        <li className='Todo'>
+            {editing
+            ? 
+            <div>
+                <form className='Todo-EditForm' onSubmit={handleSubmit}>
+                    <input name='task' value={editedTask} onChange={handleEditedTask}/>
+                    <button>Update</button>
+                </form>
+            </div>
+            : 
+            <div className='Todo-div'>
+                <p className={completed ? 'Todo-task completed' :'Todo-task'} onClick={handleToggle}>{task}</p>
+                <div className='Todo-buttons'>
+                    <button><i class="fas fa-pen" onClick={handleEdit}></i></button>
+                    <button><i class="fas fa-trash" onClick={handleDelete}></i></button>
                 </div>
-                : 
-                <div className='Todo-div'>
-                    <p className={this.props.completed ? 'Todo-task completed' :'Todo-task'} onClick={this.handleToggle}>{this.props.task}</p>
-                    <div className='Todo-buttons'>
-                        <button><i class="fas fa-pen" onClick={this.handleEdit}></i></button>
-                        <button><i class="fas fa-trash" onClick={this.handleDelete}></i></button>
-                    </div>
-                </div>
-                }
-            </li>
-        )
-    }    
+            </div>
+            }
+        </li>
+    )
 }
 
 export default Todo

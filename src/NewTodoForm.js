@@ -1,33 +1,22 @@
-import {Component} from 'react'
+import React from 'react'
+import useFormState from './hooks/useFormState'
 import './NewTodoForm.css'
 
-class NewTodoForm extends Component{
-    state = {
-        task:''
-    }
-    handleChange = (evt)=>{
-        this.setState({
-            [evt.target.name] : evt.target.value
-        })
-    }
-    handleSubmit = (evt)=>{
+const NewTodoForm = ({ addTodo })=>{
+    const [task, setTask, resetTask] = useFormState('')
+
+    const handleSubmit = (evt)=>{
         evt.preventDefault()
-        // console.log(this.state);
-        this.props.addTodo(this.state)
-        this.setState({
-            task:''
-        })
+        addTodo({task})
+        resetTask()
     }
-    render(){
-        return (
-            <div className='NewTodoForm'>
-                <form onSubmit={this.handleSubmit}>
-                    <input type='text' name='task' onChange={this.handleChange} value={this.state.task}/>
+    return (
+        <div className='NewTodoForm'>
+                <form onSubmit={handleSubmit}>
+                    <input type='text' name='task' onChange={setTask} value={task}/>
                     <button>make</button>
                 </form>
-            </div>
-        )
-    }    
+        </div>
+    )
 }
-
 export default NewTodoForm
