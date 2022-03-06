@@ -1,6 +1,6 @@
 import React from 'react'
-import useFormState from './hooks/useFormState'
-import useToggle from './hooks/useToggle'
+import useFormState from '../../hooks/useFormState'
+import useToggle from '../../hooks/useToggle'
 import './Todo.css'
 
 const Todo = ({ id, task, update, remove, toggle, completed})=>{

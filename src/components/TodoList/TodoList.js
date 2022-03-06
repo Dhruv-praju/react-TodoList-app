@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
-import NewTodoForm from './NewTodoForm'
+import NewTodoForm from '../NewTodoForm/NewTodoForm'
 import {v4 as uuid} from 'uuid'
-import Todo from './Todo'
+import Todo from '../Todo/Todo'
 import './TodoList.css'
 
 const TodoList = ()=>{
